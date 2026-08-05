@@ -1,0 +1,22 @@
+# AI Development - Bootable OS 1
+# Shortcut: ssh dev
+Host dev
+    HostName 192.168.191.61
+    Port 22
+    User pgs
+    IdentityFile ~/.ssh/bremer_prd_opencode_ed25519
+    IdentitiesOnly yes
+    ServerAliveInterval 30
+    ServerAliveCountMax 3
+
+
+# AI Pre-Production - Bootable OS 2
+# Shortcut: ssh prd
+Host prd
+    HostName 192.168.191.62
+    Port 22
+    User prd
+    IdentityFile ~/.ssh/bremer_prd_opencode_ed25519
+    IdentitiesOnly yes
+    ServerAliveInterval 30
+    ServerAliveCountMax 3

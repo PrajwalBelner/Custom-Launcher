@@ -1,6 +1,7 @@
 @echo off
 setlocal EnableExtensions
 
+<<<<<<< HEAD
 REM Pre-Production OpenCode launcher for Windows.
 
 set "BAT_DIR=%~dp0"
@@ -14,6 +15,10 @@ set "SHARED_LAUNCHER=%ROOT_DIR%\linux_start_opencode.sh"
 set "SETTINGS_FILE=%ROOT_DIR%\scripts\lib\settings.sh"
 
 REM Locate Git Bash.
+=======
+set "BAT_DIR=%~dp0"
+for %%I in ("%BAT_DIR%..") do set "ROOT_DIR=%%~fI"
+>>>>>>> dffd222 (Add files via upload)
 
 set "GIT_BASH=C:\Program Files\Git\bin\bash.exe"
 
@@ -23,17 +28,29 @@ if not exist "%GIT_BASH%" (
 
 if not exist "%GIT_BASH%" (
     echo ERROR: Git Bash was not found.
+<<<<<<< HEAD
     echo.
     echo Install Git for Windows and try again.
+=======
+    echo Install Git for Windows and retry.
+>>>>>>> dffd222 (Add files via upload)
     pause
     exit /b 1
 )
 
+<<<<<<< HEAD
 REM Validate the launcher package.
 
 if not exist "%LINUX_LAUNCHER%" (
     echo ERROR: The Pre-Production Linux launcher was not found.
     echo.
+=======
+set "LINUX_LAUNCHER=%ROOT_DIR%\Linux Launchers\start_ai_opencode_prd.sh"
+set "SHARED_LAUNCHER=%ROOT_DIR%\ai_open_opencode.sh"
+
+if not exist "%LINUX_LAUNCHER%" (
+    echo ERROR: Pre-Production Linux launcher was not found.
+>>>>>>> dffd222 (Add files via upload)
     echo Expected:
     echo %LINUX_LAUNCHER%
     pause
@@ -41,23 +58,33 @@ if not exist "%LINUX_LAUNCHER%" (
 )
 
 if not exist "%SHARED_LAUNCHER%" (
+<<<<<<< HEAD
     echo ERROR: The shared OpenCode launcher was not found.
     echo.
+=======
+    echo ERROR: Shared launcher was not found.
+>>>>>>> dffd222 (Add files via upload)
     echo Expected:
     echo %SHARED_LAUNCHER%
     pause
     exit /b 1
 )
 
+<<<<<<< HEAD
 if not exist "%SETTINGS_FILE%" (
     echo ERROR: The launcher library folder was not found.
     echo.
+=======
+if not exist "%ROOT_DIR%\scripts\lib\settings.sh" (
+    echo ERROR: Launcher library folder was not found.
+>>>>>>> dffd222 (Add files via upload)
     echo Expected:
     echo %ROOT_DIR%\scripts\lib
     pause
     exit /b 1
 )
 
+<<<<<<< HEAD
 REM Use a project folder passed as the first argument.
 
 if not "%~1"=="" (
@@ -132,12 +159,21 @@ echo ============================================================
 echo.
 
 REM Start the Pre-Production Linux wrapper.
+=======
+echo ========================================
+echo AI OpenCode Launcher - Pre-Production
+echo ========================================
+echo Server: prd@192.168.191.62
+echo Root:   %ROOT_DIR%
+echo.
+>>>>>>> dffd222 (Add files via upload)
 
 "%GIT_BASH%" "%LINUX_LAUNCHER%"
 
 set "RC=%ERRORLEVEL%"
 
 echo.
+<<<<<<< HEAD
 echo ============================================================
 echo Launcher exited with code %RC%.
 echo ============================================================
@@ -145,3 +181,8 @@ pause
 
 exit /b %RC%
 ``
+=======
+echo Launcher exited with code %RC%.
+pause
+exit /b %RC%
+>>>>>>> dffd222 (Add files via upload)

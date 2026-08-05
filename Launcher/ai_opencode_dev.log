@@ -1,0 +1,10 @@
+============================================================
+AI OpenCode Launcher
+Started: 2026-08-04T11:34:17+05:30
+Environment: Development
+Server: pgs@192.168.191.61
+Project: /c/Launcher/Download the corrected launcher ZIP/Launcher/Windows Launchers
+Ollama: 127.0.0.1:11435 -> 192.168.191.61:127.0.0.1:11434
+vLLM:   127.0.0.1:18000 -> 192.168.191.61:127.0.0.1:8000
+============================================================
+
