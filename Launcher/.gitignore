@@ -1,0 +1,66 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Node / frontend
+node_modules/
+dist/
+build/
+
+# Secrets
+.env
+.env.*
+*.key
+*.pem
+*.ppk
+secrets.json
+
+# SSH private keys and local SSH configuration
+.ssh/
+**/.ssh/
+keys/
+**/keys/
+id_rsa
+id_dsa
+id_ecdsa
+id_ed25519
+*_ed25519
+*_rsa
+*_ecdsa
+authorized_keys
+known_hosts
+
+# Local data
+data/uploads/*
+data/processed/*
+!data/uploads/.gitkeep
+!data/processed/.gitkeep
+
+# Runtime storage
+storage/vector_db/*
+storage/conversations/*
+storage/logs/*
+!storage/vector_db/.gitkeep
+!storage/conversations/.gitkeep
+!storage/logs/.gitkeep
+
+# Models - never commit model binaries
+*.gguf
+*.safetensors
+*.bin
+*.onnx
+models/**/*.gguf
+models/**/*.safetensors
+models/**/*.bin
+
+# Logs
+*.log
+
+# IDE / OS
+.vscode/
+.idea/
+.vs/
+.DS_Store
+Thumbs.db

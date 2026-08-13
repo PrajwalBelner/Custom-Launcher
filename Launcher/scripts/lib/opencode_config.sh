@@ -142,10 +142,14 @@ JSON
   rm -f "$config_dir/tui.json" >/dev/null 2>&1 || true
 
   if command_exists python3 && python3 --version >/dev/null 2>&1; then
-  python3 -m json.tool "$config_path" >/dev/null || \
-    fail "Generated OpenCode configuration is invalid."
-fi
+    python3 -m json.tool "$config_path" >/dev/null ||
+      fail "Generated OpenCode configuration is invalid."
+  fi
 
   printf '%s\n' "$config_path"
+<<<<<<< HEAD
 }
 >>>>>>> dffd222 (Add files via upload)
+=======
+}
+>>>>>>> 3ebe8a0 (Add repository attributes and ignore rules)

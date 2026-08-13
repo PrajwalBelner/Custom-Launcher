@@ -81,11 +81,16 @@ Open the **Linux Launchers** folder and run:
 - `start_ai_opencode_prd.sh` connects OpenCode to Pre-Production.
 - The shell launchers can be used from Git Bash, WSL, or Linux.
 
-## Shared Launcher
+## Custom Launchers
 
-Both Windows and Linux launchers use:
+Windows and Linux launchers use:
 
 ```text
+<<<<<<< HEAD
 ai_open_opencode.sh
 >>>>>>> dffd222 (Add files via upload)
+=======
+linux_start_opencode.sh
+windows_start_opencode.bat
+>>>>>>> 3ebe8a0 (Add repository attributes and ignore rules)
 ```

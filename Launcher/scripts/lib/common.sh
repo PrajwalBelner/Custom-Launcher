@@ -150,10 +150,37 @@ resolve_path() {
 }
 
 initialize_runtime_paths() {
-  PROJECT_DIR="$(resolve_path "$PROJECT_DIR")"
-  if [ ! -d "$PROJECT_DIR" ]; then
-    PROJECT_DIR="$PWD"
+  local requested_dir
+  local git_root
+
+  requested_dir="$(resolve_path "$PROJECT_DIR")"
+
+  if [ ! -d "$requested_dir" ]; then
+    fail "Project directory does not exist: $requested_dir"
   fi
+
+  # Use the Git repository root when the selected folder belongs to one.
+  # Otherwise, use the selected project folder itself.
+  git_root=""
+
+  if command_exists git; then
+    git_root="$(
+      git -C "$requested_dir" rev-parse --show-toplevel 2>/dev/null
+    )" || git_root=""
+  fi
+
+  if [ -n "$git_root" ]; then
+    PROJECT_DIR="$(resolve_path "$git_root")"
+    echo "Git project detected: $PROJECT_DIR"
+  else
+    PROJECT_DIR="$requested_dir"
+    echo "Using selected project folder: $PROJECT_DIR"
+  fi
+
+  if [ ! -d "$PROJECT_DIR" ]; then
+    fail "Selected project directory does not exist: $PROJECT_DIR"
+  fi
+
   mkdir -p "$CONTROL_DIR"
   chmod 700 "$CONTROL_DIR" 2>/dev/null || true
 }
@@ -168,10 +195,13 @@ command_exists() {
 
 pause_exit() {
   local code="$1"
+
   echo
+
   if [ -t 0 ]; then
     read -r -p "Press Enter to close..." _ || true
   fi
+
   exit "$code"
 }
 
@@ -201,6 +231,7 @@ log_header() {
 
 show_startup_banner() {
   clear 2>/dev/null || true
+
   cat <<MSG
 ============================================================
 AI OpenCode Launcher - $ENVIRONMENT_NAME
@@ -224,6 +255,11 @@ Models:
 Log: $LOG
 ============================================================
 MSG
+
   echo
+<<<<<<< HEAD
 }
 >>>>>>> dffd222 (Add files via upload)
+=======
+}
+>>>>>>> 3ebe8a0 (Add repository attributes and ignore rules)

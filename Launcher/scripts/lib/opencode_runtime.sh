@@ -87,14 +87,17 @@ ensure_opencode_available() {
 }
 
 launch_opencode() {
-  cd "$PROJECT_DIR" 2>/dev/null || cd "$SCRIPT_DIR"
+  cd "$PROJECT_DIR" 2>/dev/null ||
+    fail "Could not enter Git repository root: $PROJECT_DIR"
 
-  ensure_opencode_available || \
+  ensure_opencode_available ||
     fail "OpenCode was not found or installed. See $LOG"
 
   refresh_path
 
-  echo "Starting OpenCode in: $PWD"
+  echo "Starting OpenCode"
+  echo "Project root:  $PWD"
+  echo "Environment:   $ENVIRONMENT_NAME"
   echo "Default model: Qwen 35B-MoE"
   echo
 
@@ -104,5 +107,9 @@ launch_opencode() {
   set -e
 
   return "$rc"
+<<<<<<< HEAD
 }
 >>>>>>> dffd222 (Add files via upload)
+=======
+}
+>>>>>>> 3ebe8a0 (Add repository attributes and ignore rules)
